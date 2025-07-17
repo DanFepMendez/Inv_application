@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Mundo Microservicios</title>
+</head>
+<body>
+    <h1 id="mensaje">Cargando...</h1>
+    <button id="btnActualizar">Actualizar mensaje</button>
+    <script>
+        function cargarMensaje() {
+            fetch('http://localhost:3001/api/hola')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('mensaje').textContent = data.mensaje;
+                })
+                .catch(() => {
+                    document.getElementById('mensaje').textContent = 'Error al conectar con el backend';
+                });
+        }
+        cargarMensaje();
+        document.getElementById('btnActualizar').addEventListener('click', cargarMensaje);
+    </script>
+</body>
+</html>
