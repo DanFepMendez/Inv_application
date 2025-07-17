@@ -1,0 +1,5 @@
+inventarios/index.html
+ventas/index.html
+compras/index.html
+clientes/index.html
+finanzas/index.html

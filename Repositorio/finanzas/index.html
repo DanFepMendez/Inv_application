@@ -1,0 +1,58 @@
+<!-- Página de Finanzas (antes finanzas.html) -->
+<!-- El contenido será movido aquí. -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Finanzas</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6fb; margin: 0; padding: 0; }
+        .container { margin: 60px auto; background: #fff; padding: 40px 48px 48px 48px; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); max-width: 800px; }
+        h1 { color: #8e24aa; margin-bottom: 32px; }
+        .finanzas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+        .finanza-card { background: #f3e5f5; border-radius: 12px; box-shadow: 0 2px 8px rgba(142, 36, 170, 0.07); padding: 24px 18px; text-align: center; transition: box-shadow 0.2s, background 0.2s; cursor: pointer; }
+        .finanza-card:hover { background: #8e24aa; color: #fff; box-shadow: 0 4px 16px rgba(142, 36, 170, 0.18); }
+        .add-btn { margin: 24px 0 32px 0; background: #43a047; color: #fff; border: none; padding: 12px 28px; border-radius: 8px; font-size: 1.1rem; cursor: pointer; transition: background 0.2s; }
+        .add-btn:hover { background: #357a38; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a la Página de Finanzas</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="finanzas.html">Finanzas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="container">
+            <h1>Finanzas</h1>
+            <button class="add-btn" onclick="alert('Función de agregar movimiento próximamente')">+ Agregar Movimiento</button>
+            <div class="finanzas-grid" id="finanzasGrid"></div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Mi Sitio Web de Finanzas</p>
+    </footer>
+    <script>
+        const movimientos = [
+            { tipo: 'Ingreso', concepto: 'Venta Laptop', monto: 1200, fecha: '2025-07-01' },
+            { tipo: 'Egreso', concepto: 'Compra Monitor', monto: 300, fecha: '2025-07-02' },
+            { tipo: 'Ingreso', concepto: 'Venta Proyector', monto: 400, fecha: '2025-07-10' }
+        ];
+        const grid = document.getElementById('finanzasGrid');
+        movimientos.forEach(m => {
+            const div = document.createElement('div');
+            div.className = 'finanza-card';
+            div.innerHTML = `<strong>${m.tipo}</strong><br>Concepto: ${m.concepto}<br>Monto: $${m.monto}<br>Fecha: ${m.fecha}`;
+            div.onclick = () => alert(`${m.tipo} - ${m.concepto}\nMonto: $${m.monto}\nFecha: ${m.fecha}`);
+            grid.appendChild(div);
+        });
+    </script>
+</body>
+</html>
