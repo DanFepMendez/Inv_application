@@ -1,0 +1,61 @@
+<!-- Página de Clientes (antes clientes.html) -->
+<!-- El contenido será movido aquí. -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Clientes</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6fb; margin: 0; padding: 0; }
+        .container { margin: 60px auto; background: #fff; padding: 40px 48px 48px 48px; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); max-width: 800px; }
+        h1 { color: #f9a825; margin-bottom: 32px; }
+        .clientes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+        .cliente-card { background: #fffde7; border-radius: 12px; box-shadow: 0 2px 8px rgba(249, 168, 37, 0.07); padding: 24px 18px; text-align: center; transition: box-shadow 0.2s, background 0.2s; cursor: pointer; }
+        .cliente-card:hover { background: #f9a825; color: #fff; box-shadow: 0 4px 16px rgba(249, 168, 37, 0.18); }
+        .add-btn { margin: 24px 0 32px 0; background: #43a047; color: #fff; border: none; padding: 12px 28px; border-radius: 8px; font-size: 1.1rem; cursor: pointer; transition: background 0.2s; }
+        .add-btn:hover { background: #357a38; }
+        .modal-bg { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.25); align-items: center; justify-content: center; z-index: 10; }
+        .modal { background: #fff; border-radius: 14px; padding: 32px 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.18); min-width: 260px; }
+        .close-btn { margin-top: 18px; background: #1976d2; color: #fff; border: none; padding: 8px 18px; border-radius: 8px; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+        .close-btn:hover { background: #125ea7; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clientes</h1>
+        <button class="add-btn" onclick="alert('Función de agregar cliente próximamente')">+ Agregar Cliente</button>
+        <div class="clientes-grid" id="clientesGrid"></div>
+        <div class="modal-bg" id="modalBg">
+            <div class="modal" id="modalContent"></div>
+        </div>
+    </div>
+    <script>
+        const clientes = [
+            { nombre: 'Juan Pérez', email: 'juan.perez@email.com', telefono: '555-1234', direccion: 'Calle 1, Ciudad' },
+            { nombre: 'María López', email: 'maria.lopez@email.com', telefono: '555-5678', direccion: 'Avenida 2, Ciudad' },
+            { nombre: 'Carlos Ruiz', email: 'carlos.ruiz@email.com', telefono: '555-8765', direccion: 'Boulevard 3, Ciudad' },
+            { nombre: 'Ana Torres', email: 'ana.torres@email.com', telefono: '555-4321', direccion: 'Plaza 4, Ciudad' },
+            { nombre: 'Lucía Gómez', email: 'lucia.gomez@email.com', telefono: '555-2468', direccion: 'Camino 5, Ciudad' }
+        ];
+        const grid = document.getElementById('clientesGrid');
+        const modalBg = document.getElementById('modalBg');
+        const modalContent = document.getElementById('modalContent');
+        clientes.forEach((c, idx) => {
+            const div = document.createElement('div');
+            div.className = 'cliente-card';
+            div.innerHTML = `<strong>${c.nombre}</strong><br>Email: ${c.email}`;
+            div.onclick = () => mostrarModal(idx);
+            grid.appendChild(div);
+        });
+        function mostrarModal(idx) {
+            const c = clientes[idx];
+            modalContent.innerHTML = `<h2>${c.nombre}</h2><p><strong>Email:</strong> ${c.email}<br><strong>Teléfono:</strong> ${c.telefono}<br><strong>Dirección:</strong> ${c.direccion}</p><button class='close-btn' onclick='cerrarModal()'>Cerrar</button>`;
+            modalBg.style.display = 'flex';
+        }
+        function cerrarModal() { modalBg.style.display = 'none'; }
+        modalBg.onclick = function(e) { if(e.target === modalBg) cerrarModal(); };
+    </script>
+</body>
+</html>

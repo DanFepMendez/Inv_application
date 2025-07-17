@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Principal - Aplicación</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f6fb;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main-container {
+            margin-top: 60px;
+            background: #fff;
+            padding: 40px 48px 48px 48px;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 320px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #1976d2;
+            margin-bottom: 32px;
+            letter-spacing: 1px;
+        }
+        .modulos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 28px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .modulo-card {
+            background: #e3eafc;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
+            padding: 32px 18px;
+            text-align: center;
+            transition: box-shadow 0.2s, background 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: #1976d2;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        .modulo-card:hover {
+            background: #1976d2;
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(25, 118, 210, 0.18);
+        }
+        @media (max-width: 700px) {
+            .main-container { padding: 24px 8px; }
+            .modulos-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>Panel Principal</h1>
+        <div class="modulos-grid">
+            <a class="modulo-card" href="inventarios/index.html">Inventarios</a>
+            <a class="modulo-card" href="ventas/index.html">Ventas</a>
+            <a class="modulo-card" href="compras/index.html">Compras</a>
+            <a class="modulo-card" href="clientes/index.html">Clientes</a>
+            <a class="modulo-card" href="finanzas/index.html">Finanzas</a>
+        </div>
+    </div>
+</body>
+</html>
